@@ -28,7 +28,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- العنوان ---
-st.title("🇩🇪 German Career Sender Pro (Web Version)")
+st.title("Deutsch Bildung Sender Pro 0633991635")
 st.markdown("### 🚀 أرسل طلبات العمل (Ausbildung) من المتصفح مباشرة")
 
 # --- تقسيم الشاشة ---
