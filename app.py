@@ -10,9 +10,8 @@ import time
 # --- 🛑 لائحة المشتركين (VIP List) 🛑 ---
 # هنا كتب الإيميلات ديال الناس اللي خلصوك باش يخدمو بلا ليميت
 AUTHORIZED_USERS = [
-    "oussama.kehal@gmail.com",  # مثال: إيميلك نتا
-    "client1@gmail.com",        # مثال: كليان 1
-    "client2@gmail.com"         # مثال: كليان 2
+    "oussama.kehal@gmail.com",
+    "client1@gmail.com"
 ]
 
 # --- إعدادات الصفحة ---
@@ -37,33 +36,41 @@ div[data-testid="stButton"] button:first-child:hover {background-color: #B71C1C;
 </style>
 """, unsafe_allow_html=True)
 
-# --- 🟢 الهيدر (Header) ---
+# --- 🟢 الهيدر (Header) كامل ---
 st.markdown("""
 <div style="text-align: center; padding-bottom: 10px;">
-<h1 style="color: #333; font-size: 30px; font-weight: 800; margin-bottom: 15px;">Deutsch Bildung Sender Pro 🇩🇪</h1>
-<div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
-<a href="https://wa.me/212633991635" target="_blank" style="text-decoration: none;">
-<div style="background-color: #25D366; color: white; padding: 8px 20px; border-radius: 50px; display: flex; align-items: center; gap: 8px; font-weight: bold; font-size: 14px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
-WhatsApp 💬
-</div>
-</a>
-<a href="https://www.instagram.com/deutsch_bildung?igsh=bXQyeW9maGV0aWFp" target="_blank" style="text-decoration: none;">
-<div style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; padding: 8px 20px; border-radius: 50px; display: flex; align-items: center; gap: 8px; font-weight: bold; font-size: 14px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
-Instagram 📸
-</div>
-</a>
-<a href="mailto:deutschbildung.de@gmail.com" target="_blank" style="text-decoration: none;">
-<div style="background-color: #EA4335; color: white; padding: 8px 20px; border-radius: 50px; display: flex; align-items: center; gap: 8px; font-weight: bold; font-size: 14px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
-Email 📧
-</div>
-</a>
-</div>
-<div style="background-color: #fff3cd; border: 1px solid #ffeeba; border-radius: 12px; padding: 15px; margin-bottom: 25px; color: #856404;">
-<p style="font-size: 16px; margin: 0; font-weight: bold; text-align: center; direction: rtl;">
-⚠️ تنبيه هام: النسخة المجانية كتمكنك تصيفط لـ 3 ديال الشركات فقط للتجربة.<br>
-باش تفتح النسخة الكاملة (Unlimited) تواصل معنا عبر واتساب.
-</p>
-</div>
+    <h1 style="color: #333; font-size: 30px; font-weight: 800; margin-bottom: 15px;">Deutsch Bildung Sender Pro 🇩🇪</h1>
+    
+    <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+        <a href="https://wa.me/212633991635" target="_blank" style="text-decoration: none;">
+            <div style="background-color: #25D366; color: white; padding: 8px 20px; border-radius: 50px; display: flex; align-items: center; gap: 8px; font-weight: bold; font-size: 14px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">WhatsApp 💬</div>
+        </a>
+        <a href="https://www.instagram.com/deutsch_bildung?igsh=bXQyeW9maGV0aWFp" target="_blank" style="text-decoration: none;">
+            <div style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; padding: 8px 20px; border-radius: 50px; display: flex; align-items: center; gap: 8px; font-weight: bold; font-size: 14px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">Instagram 📸</div>
+        </a>
+        <a href="mailto:deutschbildung.de@gmail.com" target="_blank" style="text-decoration: none;">
+            <div style="background-color: #EA4335; color: white; padding: 8px 20px; border-radius: 50px; display: flex; align-items: center; gap: 8px; font-weight: bold; font-size: 14px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">Email 📧</div>
+        </a>
+    </div>
+
+    <div style="background-color: #fff3cd; border: 1px solid #ffeeba; border-radius: 12px; padding: 15px; margin-bottom: 20px; color: #856404;">
+        <p style="font-size: 16px; margin: 0; font-weight: bold; text-align: center; direction: rtl;">
+        ⚠️ تنبيه هام: النسخة المجانية كتمكنك تصيفط لـ 3 ديال الشركات فقط للتجربة.<br>
+        باش تفتح النسخة الكاملة (Unlimited) تواصل معنا عبر واتساب.
+        </p>
+    </div>
+
+    <div style="background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 12px; padding: 15px; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.03);">
+        <p style="font-size: 16px; color: #444; margin-bottom: 10px; line-height: 1.6; text-align: right; direction: rtl;">
+            <b>إذا واجهتك أي مشكلة فالبوت، تواصل معنا فوراً عبر واتساب، إنستغرام أو الإيميل 🛠️</b>
+        </p>
+        <hr style="border: 0; border-top: 1px solid #ddd; margin: 10px 0;">
+        <ul style="list-style-type: none; padding: 0; margin: 0; color: #333; font-size: 14px; line-height: 2; text-align: right; direction: rtl;">
+            <li>✅ كنعاونوك كذلك فكل ما يخص اللغة الألمانية، الفيزا، وإنشاء ملف احترافي للتكوين المهني.</li>
+            <li>👥 فريقنا مكوّن من أكثر من 20 شخص وعندنا 5 سنوات خبرة فعلية وحلّينا مئات الملفات بنجاح.</li>
+            <li>🚀 خدمتنا سريعة، واضحة وبدون صداع.</li>
+        </ul>
+    </div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -128,7 +135,6 @@ if st.button("🚀 إرسال الآن (Start Sending)"):
         is_premium = email_user.strip() in AUTHORIZED_USERS
         limit = 3
         
-        # إذا لم يكن مشتركاً وكان العدد أكبر من 3، نأخذ فقط أول 3
         final_list = receivers_list
         limit_reached = False
         
