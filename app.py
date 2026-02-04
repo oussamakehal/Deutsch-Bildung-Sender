@@ -18,8 +18,12 @@ html, body, [class*="css"] {font-family: 'Cairo', sans-serif;}
 .stTextInput label, .stTextArea label, .stSelectbox label, .stRadio label, .stFileUploader label, .stSlider label {
 text-align: right; direction: rtl; font-weight: bold; color: #FFC107;}
 .stMarkdown p {text-align: right; direction: rtl;}
-div.stButton > button {width: 100%; background-color: #D32F2F; color: white; border-radius: 8px; height: 50px; font-weight: bold; font-size: 18px; border: none;}
-div.stButton > button:hover {background-color: #B71C1C;}
+/* ستايل الأزرار العامة */
+div.stButton > button {width: 100%; border-radius: 8px; height: 50px; font-weight: bold; font-size: 18px; border: none;}
+/* ستايل خاص لزر الإرسال (أحمر) */
+div[data-testid="stButton"] button:first-child {background-color: #D32F2F; color: white;}
+div[data-testid="stButton"] button:first-child:hover {background-color: #B71C1C;}
+
 .result-card-success {background-color: #1E1E1E; border-left: 6px solid #25D366; padding: 12px; border-radius: 8px; margin-bottom: 8px; display: flex; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.2);}
 .result-card-fail {background-color: #1E1E1E; border-left: 6px solid #FF0000; padding: 12px; border-radius: 8px; margin-bottom: 8px; display: flex; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.2);}
 .email-text {color: white; font-family: monospace; font-size: 16px; margin-left: 15px; flex-grow: 1;}
@@ -63,21 +67,39 @@ Email 📧
 </div>
 """, unsafe_allow_html=True)
 
-# --- باقي الكود ---
+# --- 1. قسم معلومات الحساب + زر الفحص ---
 with st.container(border=True):
     st.markdown("### 🔐 معلومات الحساب")
     email_user = st.text_input("بريد Gmail الخاص بك", placeholder="example@gmail.com")
     email_pass = st.text_input("كود التطبيق (App Password)", type="password")
+    
+    # 🔥 البوطونا الجديدة ديال الكونيكسيون 🔥
+    if st.button("تجربة الاتصال (Test Connection) 🔌"):
+        if not email_user or not email_pass:
+            st.error("المرجو إدخال الإيميل والباسورد أولاً!")
+        else:
+            try:
+                with st.spinner("جاري التحقق من المعلومات..."):
+                    server = smtplib.SMTP('smtp.gmail.com', 587)
+                    server.starttls()
+                    server.login(email_user, email_pass)
+                    server.quit()
+                st.success("✅ متصل بنجاح! المعلومات صحيحة.")
+            except Exception as e:
+                st.error(f"❌ خطأ! تأكد من الإيميل أو App Password.")
+
     with st.expander("❓ كيفاش تجيب App Password؟"):
         st.info("سير لـ Google Account > Security > 2-Step Verification > App Passwords")
         st.link_button("🔗 رابط سريع", "https://myaccount.google.com/apppasswords")
 
+# --- 2. قسم الرسالة ---
 with st.container(border=True):
     st.markdown("### ✉️ تفاصيل الرسالة")
     subject = st.text_input("موضوع الرسالة (Betreff)")
     body = st.text_area("نص الرسالة (Anschreiben)", height=200)
     uploaded_files = st.file_uploader("📎 إرفاق ملفات", accept_multiple_files=True)
 
+# --- 3. قسم المستلمين ---
 with st.container(border=True):
     st.markdown("### 👥 قائمة المستلمين")
     input_method = st.radio("طريقة الإدخال:", ["كتابة يدوية", "ملف CSV"], horizontal=True)
@@ -95,6 +117,7 @@ with st.container(border=True):
             if "@" in line: receivers_list.append(line.strip())
     delay = st.slider("الانتظار (ثواني)", 5, 60, 10)
 
+# --- 4. زر الإرسال ---
 st.markdown("<br>", unsafe_allow_html=True)
 if st.button("🚀 إرسال الآن (Start Sending)"):
     if not email_user or not email_pass:
