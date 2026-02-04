@@ -39,6 +39,17 @@ with col1:
     email_user = st.text_input("Gmail Address", placeholder="example@gmail.com")
     email_pass = st.text_input("App Password", type="password", help="الكود ديال 16 حرف")
     
+    # --- الإضافة الجديدة: زر المساعدة ---
+    with st.expander("❓ كيفاش نصاوب App Password؟ (اضغط هنا)"):
+        st.markdown("""
+        1. خاصك تكون مفعل **التحقق بخطوتين (2-Step Verification)** فجوجل.
+        2. اضغط على الزر لتحت 👇.
+        3. في خانة "Select app" اختار **Mail**، وفي "Select device" اختار **Windows Computer**.
+        4. اضغط **Generate**.
+        5. غادي يعطيك كود فيه 16 حرف، كوبيه وحطو فخانة App Password الفوق.
+        """)
+        st.link_button("🔗 اضغط هنا لإنشاء الكود (Google)", "https://myaccount.google.com/apppasswords")
+
     st.warning("✉️ محتوى الرسالة")
     subject = st.text_input("موضوع الرسالة (Betreff)")
     body = st.text_area("نص الرسالة (Anschreiben)", height=250)
