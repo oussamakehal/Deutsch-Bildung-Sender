@@ -28,7 +28,7 @@ div.stButton > button:hover {background-color: #B71C1C;}
 </style>
 """, unsafe_allow_html=True)
 
-# --- 🟢 الهيدر (Header) ---
+# --- 🟢 الهيدر (Header) مع 3 أزرار ---
 st.markdown("""
 <div style="text-align: center; padding-bottom: 10px;">
 <h1 style="color: #333; font-size: 30px; font-weight: 800; margin-bottom: 15px;">Deutsch Bildung Sender Pro 🇩🇪</h1>
@@ -41,6 +41,11 @@ WhatsApp 💬
 <a href="https://www.instagram.com/deutsch_bildung?igsh=bXQyeW9maGV0aWFp" target="_blank" style="text-decoration: none;">
 <div style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; padding: 8px 20px; border-radius: 50px; display: flex; align-items: center; gap: 8px; font-weight: bold; font-size: 14px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
 Instagram 📸
+</div>
+</a>
+<a href="mailto:deutschbildung.de@gmail.com" target="_blank" style="text-decoration: none;">
+<div style="background-color: #EA4335; color: white; padding: 8px 20px; border-radius: 50px; display: flex; align-items: center; gap: 8px; font-weight: bold; font-size: 14px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
+Email 📧
 </div>
 </a>
 </div>
@@ -58,7 +63,7 @@ Instagram 📸
 </div>
 """, unsafe_allow_html=True)
 
-# --- باقي الكود (Forms) ---
+# --- باقي الكود ---
 with st.container(border=True):
     st.markdown("### 🔐 معلومات الحساب")
     email_user = st.text_input("بريد Gmail الخاص بك", placeholder="example@gmail.com")
