@@ -46,6 +46,38 @@ st.markdown("""
     div.stButton > button:hover {
         background-color: #B71C1C;
     }
+    
+    /* تصميم بطاقات النتائج (الجدول الجديد) */
+    .result-card-success {
+        background-color: #1E1E1E;
+        border-left: 6px solid #25D366; /* أخضر */
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    .result-card-fail {
+        background-color: #1E1E1E;
+        border-left: 6px solid #FF0000; /* أحمر */
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    .email-text {
+        color: white;
+        font-family: monospace;
+        font-size: 16px;
+        margin-left: 15px;
+        flex-grow: 1;
+    }
+    .status-icon {
+        font-size: 20px;
+    }
 
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
@@ -53,7 +85,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# --- 🟢 الهيدر (Header) مع واتساب و انستغرام ---
+# --- 🟢 الهيدر (Header) ---
 st.markdown("""
 <div style="text-align: center; padding-bottom: 20px;">
 <h1 style="color: #333; font-size: 28px;">Deutsch Bildung Sender Pro 🇩🇪</h1>
@@ -111,7 +143,7 @@ with st.container(border=True):
 
     delay = st.slider("الانتظار (ثواني)", 5, 60, 10)
 
-# --- 4. زر الإرسال ---
+# --- 4. زر الإرسال والجدول ---
 st.markdown("<br>", unsafe_allow_html=True)
 if st.button("🚀 إرسال الآن (Start Sending)"):
     if not email_user or not email_pass:
@@ -119,9 +151,14 @@ if st.button("🚀 إرسال الآن (Start Sending)"):
     elif not receivers_list:
         st.error("ماكين حتى إيميل!")
     else:
-        progress_text = "جاري الإرسال..."
-        my_bar = st.progress(0, text=progress_text)
-        status_area = st.empty()
+        st.markdown("### 📡 تقرير الإرسال المباشر (Live Status)")
+        
+        # بار التقدم
+        progress_bar = st.progress(0)
+        status_text = st.empty()
+        
+        # مكان الجدول (Container)
+        results_container = st.container()
         
         try:
             server = smtplib.SMTP('smtp.gmail.com', 587)
@@ -147,19 +184,35 @@ if st.button("🚀 إرسال الآن (Start Sending)"):
                     
                     server.sendmail(email_user, receiver, msg.as_string())
                     success_count += 1
-                    status_area.success(f"✅ داز لـ: {receiver}")
-                    my_bar.progress((i + 1) / len(receivers_list))
+                    
+                    # ✅ إضافة سطر أخضر للجدول
+                    with results_container:
+                        st.markdown(f"""
+                        <div class="result-card-success">
+                            <span class="status-icon">✅</span>
+                            <span class="email-text">{receiver}</span>
+                        </div>
+                        """, unsafe_allow_html=True)
+                        
+                    progress_bar.progress((i + 1) / len(receivers_list))
                     time.sleep(delay)
                     
                 except Exception as e:
-                    status_area.error(f"❌ مشكل مع {receiver}")
+                    # ❌ إضافة سطر أحمر للجدول
+                    with results_container:
+                        st.markdown(f"""
+                        <div class="result-card-fail">
+                            <span class="status-icon">❌</span>
+                            <span class="email-text">{receiver}</span>
+                        </div>
+                        """, unsafe_allow_html=True)
             
             server.quit()
             st.balloons()
-            st.success(f"تم إرسال {success_count} رسالة!")
+            st.success(f"انتهت العملية! {success_count} / {len(receivers_list)} ناجح.")
             
         except Exception as e:
-            st.error(f"خطأ: {e}")
+            st.error(f"خطأ في الاتصال: {e}")
 
 # Footer
 st.markdown("""
