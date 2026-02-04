@@ -125,4 +125,4 @@ with col2:
 
 # Footer
 st.markdown("---")
-st.markdown("Develop by YourName | Deutsch Bildung 2026")
+st.markdown("Develop by Oussama Kehal | Deutsch Bildung 2026")
