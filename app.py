@@ -16,6 +16,7 @@ AUTHORIZED_USERS = [
     "deutschbildung.de@gmail.com",
     "rajae.bertali.1997@gmail.com",
     "client1@gmail.com"
+    "salahkharraz95@gmail.com"
 ]
 
 # --- 📁 إعدادات الذاكرة (JSON) ---
