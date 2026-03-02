@@ -12,11 +12,11 @@ import time
 # --- 🛑 لائحة المشتركين (VIP List) 🛑 ---
 AUTHORIZED_USERS = [
     "oukehal@gmail.com",
+    "salahkharraz95@gmail.com",
     "oussamakehal999@gmail.com",
     "deutschbildung.de@gmail.com",
     "rajae.bertali.1997@gmail.com",
     "client1@gmail.com"
-    "salahkharraz95@gmail.com"
 ]
 
 # --- 📁 إعدادات الذاكرة (JSON) ---
