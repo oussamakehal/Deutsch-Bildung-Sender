@@ -13,7 +13,6 @@ import time
 AUTHORIZED_USERS = [
     "oukehal@gmail.com",
     "mouadahnich50@gmail.com",
-    "ayoubelhamdi000@gmail.com",
     "oussamakehal999@gmail.com",
     "mohammed.ait.sihammou.99@gmail.com",
     "deutschbildung.de@gmail.com",
