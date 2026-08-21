@@ -15,6 +15,7 @@ AUTHORIZED_USERS = [
     "mouadahnich50@gmail.com",
     "oussamakehal999@gmail.com",
     "mohammed.ait.sihammou.99@gmail.com",
+    "yassinenejjari99@gmail.com",
     "deutschbildung.de@gmail.com",
     "rajae.bertali.1997@gmail.com",
     "client1@gmail.com"
